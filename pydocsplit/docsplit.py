@@ -160,7 +160,7 @@ class Docsplit:
         try:
             proc = subprocess.Popen(shlex.split(cmd), shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         except Exception, e:
-            raise ExtractionError(cmd, "Failed to call underlying tool")
+            raise ExtractionError(cmd, str(e))
         else:
             if proc.wait() != 0:
                 raise ExtractionError(cmd, proc.communicate()[0])
